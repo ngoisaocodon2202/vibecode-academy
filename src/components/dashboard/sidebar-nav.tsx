@@ -65,7 +65,7 @@ export function SidebarNav({ items = STUDENT_NAV, onNavigate }: { items?: NavIte
               "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors",
               isActive
                 ? "bg-brand-blue/10 text-brand-blue"
-                : "text-text-secondary hover:bg-white/5 hover:text-text-primary",
+                : "text-text-secondary hover:bg-brand-blue/8 hover:text-text-primary",
             )}
           >
             <Icon className="h-4.5 w-4.5" />

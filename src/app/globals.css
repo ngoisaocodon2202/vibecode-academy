@@ -1,36 +1,40 @@
 @import "tailwindcss";
 
 :root {
-  --color-bg-primary: #0b1020;
-  --color-bg-secondary: #111a2e;
-  --color-bg-card: #151f35;
+  --color-bg-primary: #fffaf0;
+  --color-bg-secondary: #ffffff;
+  --color-bg-card: #ffffff;
 
-  --color-brand-blue: #3b82f6;
-  --color-brand-violet: #8b5cf6;
-  --color-brand-cyan: #22d3ee;
+  --color-brand-blue: #d97706;
+  --color-brand-violet: #f59e0b;
+  --color-brand-cyan: #fbbf24;
 
-  --color-text-primary: #f8fafc;
-  --color-text-secondary: #94a3b8;
+  --color-text-primary: #1c1410;
+  --color-text-secondary: #7a6a56;
 
-  --color-border: rgba(148, 163, 184, 0.15);
+  --color-border: rgba(217, 119, 6, 0.18);
 
-  --color-success: #22c55e;
-  --color-warning: #f59e0b;
-  --color-error: #ef4444;
+  --color-success: #16a34a;
+  --color-warning: #d97706;
+  --color-error: #dc2626;
 
   --background: var(--color-bg-primary);
   --foreground: var(--color-text-primary);
 }
 
-:root.light {
-  --color-bg-primary: #f8fafc;
-  --color-bg-secondary: #ffffff;
-  --color-bg-card: #ffffff;
+:root.dark {
+  --color-bg-primary: #1a1206;
+  --color-bg-secondary: #241a0c;
+  --color-bg-card: #2b2010;
 
-  --color-text-primary: #0b1020;
-  --color-text-secondary: #475569;
+  --color-brand-blue: #f59e0b;
+  --color-brand-violet: #fbbf24;
+  --color-brand-cyan: #fcd34d;
 
-  --color-border: rgba(15, 23, 42, 0.1);
+  --color-text-primary: #fff7e8;
+  --color-text-secondary: #c9ad85;
+
+  --color-border: rgba(251, 191, 36, 0.18);
 
   --background: var(--color-bg-primary);
   --foreground: var(--color-text-primary);
@@ -61,11 +65,11 @@
 }
 
 html {
-  color-scheme: dark;
+  color-scheme: light;
 }
 
-html.light {
-  color-scheme: light;
+html.dark {
+  color-scheme: dark;
 }
 
 body {

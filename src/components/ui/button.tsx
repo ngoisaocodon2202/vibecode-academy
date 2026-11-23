@@ -17,9 +17,9 @@ const variantClasses: Record<ButtonVariant, string> = {
   primary:
     "bg-gradient-to-r from-brand-blue to-brand-violet text-white hover:brightness-110 focus-visible:ring-brand-blue/50 disabled:brightness-75",
   secondary:
-    "bg-bg-card text-text-primary border border-border-subtle hover:bg-white/5 focus-visible:ring-brand-blue/40",
+    "bg-bg-card text-text-primary border border-border-subtle hover:bg-brand-blue/8 focus-visible:ring-brand-blue/40",
   ghost:
-    "bg-transparent text-text-primary hover:bg-white/5 focus-visible:ring-brand-blue/40",
+    "bg-transparent text-text-primary hover:bg-brand-blue/8 focus-visible:ring-brand-blue/40",
   danger:
     "bg-error text-white hover:brightness-110 focus-visible:ring-error/50",
 };

@@ -115,7 +115,7 @@ export function SiteHeader({ user }: { user: Pick<User, "id" | "name" | "role"> 
                   key={link.href}
                   href={link.href}
                   onClick={() => setIsMenuOpen(false)}
-                  className="rounded-lg px-3 py-2.5 text-sm font-medium text-text-secondary hover:bg-white/5 hover:text-text-primary"
+                  className="rounded-lg px-3 py-2.5 text-sm font-medium text-text-secondary hover:bg-brand-blue/8 hover:text-text-primary"
                 >
                   {link.label}
                 </Link>

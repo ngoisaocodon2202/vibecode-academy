@@ -28,15 +28,15 @@ export function HeroSection() {
         }}
       />
       <div
-        className="pointer-events-none absolute left-1/2 top-[-10%] h-[600px] w-[900px] -translate-x-1/2 rounded-full opacity-60 blur-3xl"
+        className="pointer-events-none absolute left-1/2 top-[-10%] h-[600px] w-[900px] -translate-x-1/2 rounded-full opacity-50 blur-3xl"
         style={{
           background:
-            "radial-gradient(closest-side, rgba(59,130,246,0.35), rgba(139,92,246,0.2), transparent 70%)",
+            "radial-gradient(closest-side, rgba(217,119,6,0.3), rgba(245,158,11,0.18), transparent 70%)",
         }}
       />
       <div
-        className="pointer-events-none absolute right-[8%] top-[18%] h-64 w-64 rounded-full opacity-40 blur-3xl"
-        style={{ background: "radial-gradient(closest-side, rgba(34,211,238,0.4), transparent 70%)" }}
+        className="pointer-events-none absolute right-[8%] top-[18%] h-64 w-64 rounded-full opacity-35 blur-3xl"
+        style={{ background: "radial-gradient(closest-side, rgba(251,191,36,0.35), transparent 70%)" }}
       />
 
       <div className="relative mx-auto max-w-4xl text-center">

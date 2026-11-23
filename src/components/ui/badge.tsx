@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils/cn";
 type BadgeVariant = "default" | "success" | "warning" | "error" | "brand";
 
 const variantClasses: Record<BadgeVariant, string> = {
-  default: "bg-white/5 text-text-secondary border-border-subtle",
+  default: "bg-brand-blue/8 text-text-secondary border-border-subtle",
   success: "bg-success/10 text-success border-success/30",
   warning: "bg-warning/10 text-warning border-warning/30",
   error: "bg-error/10 text-error border-error/30",

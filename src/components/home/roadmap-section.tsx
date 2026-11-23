@@ -24,7 +24,7 @@ export function RoadmapSection() {
           {STEPS.map((step, idx) => (
             <AnimateIn key={step.level} delay={idx * 0.1} className="relative flex gap-4 sm:gap-6">
               <div className="hidden sm:block">
-                <div className="relative z-10 mt-1.5 h-[18px] w-[18px] -ml-6 rounded-full border-2 border-brand-blue bg-bg-primary shadow-[0_0_12px_rgba(59,130,246,0.6)]" />
+                <div className="relative z-10 mt-1.5 h-[18px] w-[18px] -ml-6 rounded-full border-2 border-brand-blue bg-bg-primary shadow-[0_0_12px_rgba(217,119,6,0.55)]" />
               </div>
               <div className="flex-1 rounded-xl border border-border-subtle bg-bg-card p-5 transition-colors hover:border-brand-blue/30">
                 <div className="flex items-center gap-2">
