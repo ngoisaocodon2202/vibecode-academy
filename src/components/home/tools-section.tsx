@@ -28,14 +28,11 @@ const TOOLS: Tool[] = [
 
 function ToolPill({ tool }: { tool: Tool }) {
   return (
-    <div className="group flex shrink-0 items-center gap-2.5 rounded-xl border border-border-subtle bg-bg-card px-5 py-3.5 transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-blue/50 hover:bg-brand-blue/5">
+    <div className="group flex shrink-0 items-center gap-2.5 rounded-xl border border-border-subtle bg-bg-card px-5 py-3.5 opacity-80 transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-blue/50 hover:bg-brand-blue/5 hover:opacity-100">
       {tool.kind === "brand" ? (
-        <TechIcon
-          name={tool.name}
-          className="h-6 w-6 text-text-secondary opacity-70 transition-all group-hover:text-text-primary group-hover:opacity-100"
-        />
+        <TechIcon name={tool.name} className="h-6 w-6 transition-transform group-hover:scale-110" />
       ) : (
-        <tool.icon className="h-6 w-6 text-text-secondary opacity-70 transition-all group-hover:text-text-primary group-hover:opacity-100" />
+        <tool.icon className="h-6 w-6 text-text-secondary transition-all group-hover:scale-110 group-hover:text-text-primary" />
       )}
       <span className="whitespace-nowrap text-sm text-text-secondary transition-colors group-hover:text-text-primary">
         {tool.label}
