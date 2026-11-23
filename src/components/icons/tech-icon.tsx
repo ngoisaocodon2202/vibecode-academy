@@ -1,0 +1,67 @@
+import {
+  siGithub,
+  siGit,
+  siVercel,
+  siReact,
+  siNextdotjs,
+  siNodedotjs,
+  siTypescript,
+  siJavascript,
+  siPostgresql,
+  siTailwindcss,
+  siFigma,
+  siGooglegemini,
+  siClaude,
+  siCursor,
+} from "simple-icons";
+
+const ICONS = {
+  github: siGithub,
+  git: siGit,
+  vercel: siVercel,
+  react: siReact,
+  nextjs: siNextdotjs,
+  nodejs: siNodedotjs,
+  typescript: siTypescript,
+  javascript: siJavascript,
+  postgresql: siPostgresql,
+  tailwindcss: siTailwindcss,
+  figma: siFigma,
+  gemini: siGooglegemini,
+  claude: siClaude,
+  cursor: siCursor,
+} as const;
+
+/**
+ * VS Code, OpenAI and Google Antigravity have no official mark in simple-icons;
+ * these names map to a generic Lucide icon in ToolsSection instead of a wrong logo.
+ */
+
+export type TechIconName = keyof typeof ICONS;
+
+export function TechIcon({
+  name,
+  className,
+  monochrome = true,
+}: {
+  name: TechIconName;
+  className?: string;
+  /** When true, renders using currentColor instead of the brand hex. */
+  monochrome?: boolean;
+}) {
+  const icon = ICONS[name];
+  const pathMatch = icon.svg.match(/<path d="([^"]+)"/);
+  if (!pathMatch) return null;
+
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      className={className}
+      fill={monochrome ? "currentColor" : `#${icon.hex}`}
+      role="img"
+      aria-label={icon.title}
+    >
+      <path d={pathMatch[1]} />
+    </svg>
+  );
+}
