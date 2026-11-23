@@ -26,10 +26,28 @@ const TOOLS: Tool[] = [
   { kind: "brand", name: "figma", label: "Figma" },
 ];
 
+function ToolPill({ tool }: { tool: Tool }) {
+  return (
+    <div className="group flex shrink-0 items-center gap-2.5 rounded-xl border border-border-subtle bg-bg-card px-5 py-3.5 transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-blue/50 hover:bg-brand-blue/5">
+      {tool.kind === "brand" ? (
+        <TechIcon
+          name={tool.name}
+          className="h-6 w-6 text-text-secondary opacity-70 transition-all group-hover:text-text-primary group-hover:opacity-100"
+        />
+      ) : (
+        <tool.icon className="h-6 w-6 text-text-secondary opacity-70 transition-all group-hover:text-text-primary group-hover:opacity-100" />
+      )}
+      <span className="whitespace-nowrap text-sm text-text-secondary transition-colors group-hover:text-text-primary">
+        {tool.label}
+      </span>
+    </div>
+  );
+}
+
 export function ToolsSection() {
   return (
-    <section className="px-4 py-20 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-7xl">
+    <section className="py-20">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <AnimateIn className="mb-12 text-center">
           <h2 className="text-2xl font-semibold text-text-primary sm:text-3xl">
             Công cụ AI được đào tạo
@@ -38,27 +56,20 @@ export function ToolsSection() {
             Thực hành trực tiếp với các công cụ và công nghệ đang dẫn đầu ngành
           </p>
         </AnimateIn>
-        <AnimateIn delay={0.1}>
-          <div className="grid grid-cols-3 gap-4 sm:grid-cols-4 lg:grid-cols-7">
-            {TOOLS.map((tool) => (
-              <div
-                key={tool.label}
-                className="group flex flex-col items-center gap-2.5 rounded-xl border border-border-subtle bg-bg-card p-4 transition-all duration-200 hover:-translate-y-0.5 hover:border-brand-blue/50 hover:bg-brand-blue/5"
-              >
-                {tool.kind === "brand" ? (
-                  <TechIcon
-                    name={tool.name}
-                    className="h-8 w-8 text-text-secondary transition-colors group-hover:text-text-primary"
-                  />
-                ) : (
-                  <tool.icon className="h-8 w-8 text-text-secondary transition-colors group-hover:text-text-primary" />
-                )}
-                <span className="text-xs text-text-secondary">{tool.label}</span>
-              </div>
+      </div>
+
+      <AnimateIn delay={0.1}>
+        <div className="group relative overflow-hidden">
+          <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-bg-primary to-transparent sm:w-32" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-bg-primary to-transparent sm:w-32" />
+
+          <div className="flex w-max animate-marquee gap-4 group-hover:[animation-play-state:paused]">
+            {[...TOOLS, ...TOOLS].map((tool, idx) => (
+              <ToolPill key={`${tool.label}-${idx}`} tool={tool} />
             ))}
           </div>
-        </AnimateIn>
-      </div>
+        </div>
+      </AnimateIn>
     </section>
   );
 }

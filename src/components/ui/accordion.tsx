@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils/cn";
 
@@ -14,7 +15,10 @@ export function Accordion({ items }: { items: { question: string; answer: string
         return (
           <div
             key={item.question}
-            className="overflow-hidden rounded-xl border border-border-subtle bg-bg-card"
+            className={cn(
+              "overflow-hidden rounded-xl border bg-bg-card transition-colors duration-300",
+              isOpen ? "border-brand-blue/40" : "border-border-subtle",
+            )}
           >
             <button
               onClick={() => setOpenIndex(isOpen ? null : idx)}
@@ -24,21 +28,24 @@ export function Accordion({ items }: { items: { question: string; answer: string
               <span className="text-sm font-medium text-text-primary">{item.question}</span>
               <ChevronDown
                 className={cn(
-                  "h-4 w-4 shrink-0 text-text-secondary transition-transform duration-200",
-                  isOpen && "rotate-180",
+                  "h-4 w-4 shrink-0 text-text-secondary transition-transform duration-300",
+                  isOpen && "rotate-180 text-brand-blue",
                 )}
               />
             </button>
-            <div
-              className={cn(
-                "grid transition-all duration-200",
-                isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0",
+            <AnimatePresence initial={false}>
+              {isOpen && (
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: "auto", opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+                  className="overflow-hidden"
+                >
+                  <p className="px-5 pb-4 text-sm text-text-secondary">{item.answer}</p>
+                </motion.div>
               )}
-            >
-              <div className="overflow-hidden">
-                <p className="px-5 pb-4 text-sm text-text-secondary">{item.answer}</p>
-              </div>
-            </div>
+            </AnimatePresence>
           </div>
         );
       })}

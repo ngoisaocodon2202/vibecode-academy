@@ -1,10 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/layout/logo";
+import { cn } from "@/lib/utils/cn";
 import type { User } from "@/generated/prisma";
 
 const NAV_LINKS = [
@@ -17,9 +18,24 @@ const NAV_LINKS = [
 
 export function SiteHeader({ user }: { user: Pick<User, "id" | "name" | "role"> | null }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setIsScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-border-subtle bg-bg-primary/80 backdrop-blur-md">
+    <header
+      className={cn(
+        "sticky top-0 z-40 border-b transition-all duration-300",
+        isScrolled
+          ? "border-border-subtle bg-bg-primary/70 backdrop-blur-xl shadow-lg shadow-black/20"
+          : "border-transparent bg-transparent backdrop-blur-0",
+      )}
+    >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-2">
           <Logo />
@@ -48,12 +64,18 @@ export function SiteHeader({ user }: { user: Pick<User, "id" | "name" | "role"> 
           ) : (
             <>
               <Link href="/login">
-                <Button size="sm" variant="ghost">
+                <Button
+                  size="sm"
+                  variant="ghost"
+                  className="border border-border-subtle hover:border-text-secondary/40"
+                >
                   Đăng nhập
                 </Button>
               </Link>
               <Link href="/register">
-                <Button size="sm">Đăng ký</Button>
+                <Button size="sm" className="shadow-md shadow-brand-blue/25 hover:shadow-brand-blue/40">
+                  Đăng ký
+                </Button>
               </Link>
             </>
           )}
